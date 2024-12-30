@@ -19,7 +19,10 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::with('groups')->orderBy('created_at', 'desc')->get();
-        return view('/employees.index', compact('employees'));
+        return view('employees.index', compact('employees'));
+
+        // Slight problem, The / before employees. That is not how a view is typically returned in laravel
+        // return view('/employees.index', compact('employees'));
     }
 
     /**
